@@ -1,10 +1,6 @@
 package com.ghamsari.rcontacts.utils
 
 import android.content.Intent
-import android.graphics.drawable.Drawable
-import android.icu.number.NumberFormatter.with
-import android.icu.number.NumberRangeFormatter.with
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ghamsari.rcontacts.R
 import com.ghamsari.rcontacts.model.Result
-import com.ghamsari.rcontacts.model.contacts
 import com.ghamsari.rcontacts.view.ContactsDetils
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView

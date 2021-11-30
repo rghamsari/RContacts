@@ -3,4 +3,5 @@
     <dimen name="phone_number_size">26dp</dimen>
     <dimen name="cardview_item_margin">10dp</dimen>
     <dimen name="title_size">24sp</dimen>
+    <dimen name="contact_detil_margin">24dp</dimen>
 </resources>

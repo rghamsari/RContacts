@@ -6,10 +6,14 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.ViewModelProvider
 import com.ghamsari.rcontacts.R
+import com.ghamsari.rcontacts.viewmodle.ContactsViewModle
+import com.ghamsari.rcontacts.viewmodle.ContactsViewModelFactory
 
 class MainActivity : AppCompatActivity() {
-
+lateinit var  viewModle: ContactsViewModle
+val contactsViewModelFactory :ContactsViewModelFactory = TODO()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,6 +24,29 @@ class MainActivity : AppCompatActivity() {
                     .setAction("Action", null).show()
         }
     }
+
+    fun lodeData(){
+
+        viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.

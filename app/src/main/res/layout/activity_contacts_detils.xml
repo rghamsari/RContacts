@@ -5,5 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.ContactsDetils">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:cardBackgroundColor="#E2F3F3"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="18dp"
+    app:cardMaxElevation="18dp"
+    android:layout_marginTop="164dp"
+    android:layout_marginLeft="@dimen/contact_detil_margin"
+    android:layout_marginBottom="@dimen/contact_detil_margin"
+    android:layout_marginRight="@dimen/contact_detil_margin"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:src="@drawable/ic_action_female"
+            android:layout_marginTop="-20dp"
+            app:civ_border_color="#009688"
+            app:civ_border_width="2dp"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
