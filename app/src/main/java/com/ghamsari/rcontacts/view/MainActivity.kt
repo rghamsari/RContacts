@@ -1,35 +1,70 @@
 package com.ghamsari.rcontacts.view
 
+import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ghamsari.rcontacts.R
+import com.ghamsari.rcontacts.model.Contacts
+import com.ghamsari.rcontacts.utils.ContactAdapter
 import com.ghamsari.rcontacts.viewmodle.ContactsViewModle
 import com.ghamsari.rcontacts.viewmodle.ContactsViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 lateinit var  viewModle: ContactsViewModle
+lateinit var contactsRecyclerView :RecyclerView
+lateinit var contactsAdapter :ContactAdapter
 val contactsViewModelFactory :ContactsViewModelFactory = TODO()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
-        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        initRecyclerView()
+        lodeData()
+
+    }
+
+    fun initRecyclerView(){
+        contactsRecyclerView.findViewById<RecyclerView>(R.id.mainactivitrRecyclview)
+        contactsRecyclerView.apply {
+            val layoutManager =LinearLayoutManager(this@MainActivity)
+            val decoration =DividerItemDecoration(applicationContext,VERTICAL)
+            addItemDecoration(decoration)
+            contactsAdapter =ContactAdapter()
+            adapter = contactsAdapter
+
+
         }
+
     }
 
-    fun lodeData(){
 
-        viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
-    }
 
+ fun lodeData(){
+     viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
+     viewModle =viewModle.ContactsViewModle().observe(this,Observer<Contacts>{
+         if (it!= null){
+             contactsAdapter.contactAdapterData=it.items
+             contactsAdapter.notifyDataSetChanged()
+         }
+        else{
+            Log.i("Rcontacts","fetching data")
+
+        }
+     })
+
+}
 
 
 
@@ -64,3 +99,5 @@ val contactsViewModelFactory :ContactsViewModelFactory = TODO()
         }
     }
 }
+
+

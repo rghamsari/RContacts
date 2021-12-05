@@ -12,8 +12,11 @@ import com.ghamsari.rcontacts.view.ContactsDetils
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
-class contactAdapter(private val dataSet :List<Result>) :RecyclerView.Adapter<contactAdapter.viewHolder>() {
-
+class ContactAdapter() :RecyclerView.Adapter<ContactAdapter.viewHolder>() {
+    lateinit var dataSet :List<Result>
+fun contactAdapterData(dataSet :List<Result>){
+    this.dataSet =dataSet
+}
     class viewHolder(view :View) :RecyclerView.ViewHolder(view) , View.OnClickListener{
          var view: View = view
         private var result :Result? = null
@@ -47,13 +50,13 @@ class contactAdapter(private val dataSet :List<Result>) :RecyclerView.Adapter<co
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): contactAdapter.viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactAdapter.viewHolder {
 
         val view =LayoutInflater.from(parent.context).inflate(R.layout.contacts_recyclerview_item,parent,false)
         return viewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: contactAdapter.viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ContactAdapter.viewHolder, position: Int) {
         val Result =dataSet[position]
         holder.bindContact(Result)
         holder.firstName.text=Result.name.first

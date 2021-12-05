@@ -19,7 +19,7 @@ class ContactRepository() {
     init {
         contactsList = MutableLiveData()
     }
-    fun getContactsListObserver() :MutableLiveData<Contacts>{
+   public fun getContactsListObserver() :MutableLiveData<Contacts>{
         return contactsList
     }
     fun makeApiCall(query :String){
