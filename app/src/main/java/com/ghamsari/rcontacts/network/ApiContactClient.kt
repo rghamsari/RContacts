@@ -12,7 +12,7 @@ class ApiContactClient {
     public fun getRetfofitInstance(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl(BaseUrl)
-                    .addConverterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 

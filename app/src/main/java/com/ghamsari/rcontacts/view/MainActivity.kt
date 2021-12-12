@@ -3,8 +3,6 @@ package com.ghamsari.rcontacts.view
 import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -53,7 +51,7 @@ val contactsViewModelFactory :ContactsViewModelFactory = TODO()
 
  fun lodeData(){
      viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
-     viewModle =viewModle.ContactsViewModle().observe(this,Observer<Contacts>{
+     viewModle =viewModle.contactsViewModle().observe(this,Observer<Contacts>{
          if (it!= null){
              contactsAdapter.contactAdapterData=it.items
              contactsAdapter.notifyDataSetChanged()
