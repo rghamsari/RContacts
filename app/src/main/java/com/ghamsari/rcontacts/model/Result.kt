@@ -2,6 +2,7 @@ package com.ghamsari.rcontacts.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Result  (
         @Expose
@@ -40,4 +41,4 @@ data class Result  (
         @Expose
         @SerializedName("registered")
     val registered: Registered
-)
+): Serializable

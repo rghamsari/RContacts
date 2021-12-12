@@ -8,7 +8,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.observe
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,20 +17,23 @@ import com.ghamsari.rcontacts.utils.ContactAdapter
 import com.ghamsari.rcontacts.viewmodle.ContactsViewModle
 import com.ghamsari.rcontacts.viewmodle.ContactsViewModelFactory
 
+
+
 class MainActivity : AppCompatActivity() {
 lateinit var  viewModle: ContactsViewModle
 lateinit var contactsRecyclerView :RecyclerView
 lateinit var contactsAdapter :ContactAdapter
 val contactsViewModelFactory :ContactsViewModelFactory = TODO()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
-
-        initRecyclerView()
         lodeData()
+        initRecyclerView()
 
     }
+
 
     fun initRecyclerView(){
         contactsRecyclerView.findViewById<RecyclerView>(R.id.mainactivitrRecyclview)
@@ -48,21 +50,16 @@ val contactsViewModelFactory :ContactsViewModelFactory = TODO()
     }
 
 
+    fun lodeData(){
+        viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
+        viewModle .contactsList.observe(this, Observer{
+            val contact :Contacts = it!!.get(0)
+            contactsAdapter.contactAdapterData(contact.results)
+            contactsAdapter.notifyDataSetChanged()
+        })
 
- fun lodeData(){
-     viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
-     viewModle =viewModle.contactsViewModle().observe(this,Observer<Contacts>{
-         if (it!= null){
-             contactsAdapter.contactAdapterData=it.items
-             contactsAdapter.notifyDataSetChanged()
-         }
-        else{
-            Log.i("Rcontacts","fetching data")
+    }
 
-        }
-     })
-
-}
 
 
 

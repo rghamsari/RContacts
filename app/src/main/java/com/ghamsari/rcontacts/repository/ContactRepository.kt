@@ -6,12 +6,12 @@ import com.ghamsari.rcontacts.network.JsonContactsHolderApi
 
 
 class ContactRepository(apiContactClient: ApiContactClient) {
-    init{
-        val retfofitInstance =
-            ApiContactClient.getRetfofitInstance().create(JsonContactsHolderApi::class.java)
-        retfofitInstance.getContacts("1", "10", "abc")
-
-    }
+//    init{
+//        val retfofitInstance =
+//            ApiContactClient.getRetfofitInstance().create(JsonContactsHolderApi::class.java)
+//        retfofitInstance.getContacts("1", "10", "abc")
+//
+//    }
 
 
 

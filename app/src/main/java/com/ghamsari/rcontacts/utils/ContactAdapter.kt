@@ -14,25 +14,25 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class ContactAdapter() :RecyclerView.Adapter<ContactAdapter.viewHolder>() {
     lateinit var dataSet :List<Result>
-fun contactAdapterData(dataSet :List<Result>){
-    this.dataSet =dataSet
-}
+    fun contactAdapterData(dataSet :List<Result>){
+        this.dataSet =dataSet
+    }
     class viewHolder(view :View) :RecyclerView.ViewHolder(view) , View.OnClickListener{
-         var view: View = view
+        var view: View = view
         private var result :Result? = null
-       val firstName :TextView
-       val lastName :TextView
-       val gender : TextView
-       val imagegender :CircleImageView
-       val phoneNumber :TextView
-       init {
-           view.setOnClickListener(this)
-           firstName =view.findViewById(R.id.first_name)
-           lastName =view.findViewById(R.id.last_name)
+        val firstName :TextView
+        val lastName :TextView
+        val gender : TextView
+        val imagegender :CircleImageView
+        val phoneNumber :TextView
+        init {
+            view.setOnClickListener(this)
+            firstName =view.findViewById(R.id.first_name)
+            lastName =view.findViewById(R.id.last_name)
             gender =view.findViewById(R.id.title)
-           imagegender =view.findViewById(R.id.image_gender)
-           phoneNumber =view.findViewById(R.id.phonenumber)
-       }
+            imagegender =view.findViewById(R.id.image_gender)
+            phoneNumber =view.findViewById(R.id.phonenumber)
+        }
         companion object {
 
             private val CONTEACT_KEY = "CONTEACT"
@@ -57,13 +57,13 @@ fun contactAdapterData(dataSet :List<Result>){
     }
 
     override fun onBindViewHolder(holder: ContactAdapter.viewHolder, position: Int) {
-        val Result =dataSet[position]
-        holder.bindContact(Result)
-        holder.firstName.text=Result.name.first
-        holder.lastName.text=Result.name.last
-        holder.phoneNumber.text=Result.phone
-        holder.gender.text =Result.gender
-        if (Result.gender.equals("Mr")){
+        val result =dataSet[position]
+        holder.bindContact(result)
+        holder.firstName.text=result.name.first
+        holder.lastName.text=result.name.last
+        holder.phoneNumber.text=result.phone
+        holder.gender.text =result.gender
+        if (result.gender.equals("Mr")){
 
             Picasso.with(holder.view.context).load(R.drawable.ic_action_man).into(holder.imagegender)
 
@@ -73,9 +73,6 @@ fun contactAdapterData(dataSet :List<Result>){
         }
 
 
-//            Picasso.with(view.context).load(photo.url).into(view.itemImage)
-//            view.itemDate.text = photo.humanDate
-//            view.itemDescription.text = photo.explanation
 
     }
 
