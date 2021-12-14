@@ -1,17 +1,21 @@
 package com.ghamsari.rcontacts.repository
 
+import com.ghamsari.rcontacts.model.Contacts
 import com.ghamsari.rcontacts.network.ApiContactClient
 import com.ghamsari.rcontacts.network.JsonContactsHolderApi
+import io.reactivex.Observable
 
 
+class ContactRepository(private val jsonContactsHolderApi: JsonContactsHolderApi) : InContactRepository{
 
-class ContactRepository(apiContactClient: ApiContactClient) {
-//    init{
-//        val retfofitInstance =
-//            ApiContactClient.getRetfofitInstance().create(JsonContactsHolderApi::class.java)
-//        retfofitInstance.getContacts("1", "10", "abc")
-//
-//    }
+    override fun getContact(page: String, result: String, seed: String): Observable<List<Contacts>> {
+
+       return jsonContactsHolderApi.getContacts(page, result, seed)
+
+
+    }
+
+
 
 
 

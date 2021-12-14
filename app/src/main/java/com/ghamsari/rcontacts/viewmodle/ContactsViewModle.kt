@@ -14,23 +14,25 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.observers.DefaultObserver
 
 
-class ContactsViewModle(Repository :ContactRepository) :ViewModel() {
+class ContactsViewModle(private var repository :ContactRepository) :ViewModel() {
+
     lateinit var Progressdialog: ProgressDialog
     private lateinit var _contactsList: MutableLiveData<List<Contacts>?>
     var contactsList : LiveData<List<Contacts>?> =_contactsList
 
-    init {
-        contactsList = MutableLiveData()
-    }
+//    init {
+//        contactsList = MutableLiveData()
+//    }
 
     public fun getContactsListObserver(): LiveData<List<Contacts>?> {
         return contactsList
     }
 
-    fun makeApiCall (query:String){
-        val retfofitInstance =
-            ApiContactClient.getRetfofitInstance().create(JsonContactsHolderApi::class.java)
-        retfofitInstance.getContacts("1", "10", "abc")
+    fun makeApiCall (page: String, result: String, seed: String){
+
+
+       repository =ContactRepository (ApiContactClient.getRetfofitInstance().create(JsonContactsHolderApi::class.java))
+        repository.getContact(page,result,seed)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getContactListObserverRx())
