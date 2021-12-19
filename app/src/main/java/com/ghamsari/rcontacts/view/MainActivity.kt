@@ -2,7 +2,6 @@ package com.ghamsari.rcontacts.view
 
 import android.graphics.drawable.ClipDrawable.VERTICAL
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem

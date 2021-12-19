@@ -14,11 +14,12 @@ import io.reactivex.schedulers.Schedulers
 import io.reactivex.observers.DefaultObserver
 
 
-class ContactsViewModle(private var repository :ContactRepository) :ViewModel() {
+class ContactsViewModle :ViewModel() {
 
     lateinit var Progressdialog: ProgressDialog
     private lateinit var _contactsList: MutableLiveData<List<Contacts>?>
     var contactsList : LiveData<List<Contacts>?> =_contactsList
+    lateinit var repository:ContactRepository
 
 //    init {
 //        contactsList = MutableLiveData()
