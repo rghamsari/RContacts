@@ -35,7 +35,7 @@ class ContactAdapter() :RecyclerView.Adapter<ContactAdapter.viewHolder>() {
         }
         companion object {
 
-            private val CONTEACT_KEY = "CONTEACT"
+          public  val CONTEACT_KEY = "CONTEACT"
         }
 
         override fun onClick(v: View?) {
@@ -63,7 +63,7 @@ class ContactAdapter() :RecyclerView.Adapter<ContactAdapter.viewHolder>() {
         holder.lastName.text=result.name.last
         holder.phoneNumber.text=result.phone
         holder.gender.text =result.gender
-        if (result.gender.equals("Mr")){
+        if (result.gender.equals("male")){
 
             Picasso.with(holder.view.context).load(R.drawable.ic_action_man).into(holder.imagegender)
 
