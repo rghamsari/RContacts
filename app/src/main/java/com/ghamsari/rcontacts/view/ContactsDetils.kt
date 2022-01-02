@@ -25,6 +25,28 @@ class ContactsDetils : AppCompatActivity() {
         intializItemView()
         val contactDetil =
             intent.getSerializableExtra(ContactAdapter.viewHolder.CONTEACT_KEY) as? Result
+        if (contactDetil != null) {
+            setDataInViewItems(contactDetil)
+        }
+
+
+    }
+
+
+
+    fun intializItemView(){
+        firstName =findViewById(R.id.first_name)
+        lastName =findViewById(R.id.last_name)
+        phonNumber =findViewById(R.id.phonenumber)
+        email=findViewById(R.id.email)
+        profile = findViewById(R.id.image_profile)
+
+    }
+
+
+
+
+    fun setDataInViewItems(contactDetil : Result){
         firstName.text = contactDetil!!.name.first
         lastName.text = contactDetil!!.name.last
         phonNumber.text = contactDetil!!.phone
@@ -35,15 +57,6 @@ class ContactsDetils : AppCompatActivity() {
         }else{
             Picasso.with(this).load(R.drawable.ic_action_female).into(profile)
         }
-
-
-    }
-    fun intializItemView(){
-        firstName =findViewById(R.id.first_name)
-        lastName =findViewById(R.id.last_name)
-        phonNumber =findViewById(R.id.phonenumber)
-        email=findViewById(R.id.email)
-        profile = findViewById(R.id.image_profile)
 
     }
 }
