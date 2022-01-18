@@ -9,31 +9,49 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.view.LayoutInflater
+import android.view.View
+import android.view.View.inflate
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.core.content.res.ResourcesCompat
 import com.ghamsari.rcontacts.R
+import com.ghamsari.rcontacts.databinding.ActivityContactsDetilsBinding.inflate
+import com.ghamsari.rcontacts.databinding.ProgressDialogViewBinding
+
 
 class CustomProgressDialog {
     lateinit var dialog: CustomDialog
+    private lateinit var binding :ProgressDialogViewBinding
+
+
 
     fun show(context: Context): Dialog {
         return show(context, null)
     }
 
+
     fun show(context: Context, title: CharSequence?): Dialog {
-        val inflater = (context as Activity).layoutInflater
-        val view = inflater.inflate(R.layout.progress_dialog_view, null)
+
+
+            binding = ProgressDialogViewBinding.inflate(LayoutInflater.from(context))
+
+        val view =binding.root
+
         if (title != null) {
-            view.cp_title.text = title
+
+            binding.cpTitle.text = title
         }
 
         // Card Color
-        view.cp_cardview.setCardBackgroundColor(Color.parseColor("#70000000"))
+        binding.cpCardview.setCardBackgroundColor(Color.parseColor("#70000000"))
 
         // Progress Bar Color
-        setColorFilter(view.cp_pbar.indeterminateDrawable, ResourcesCompat.getColor(context.resources, R.color.colorPrimary, null))
+        setColorFilter(binding.cpPbar.indeterminateDrawable, ResourcesCompat.getColor(context.resources, R.color.colorPrimary, null))
 
         // Text Color
-        view.cp_title.setTextColor(Color.WHITE)
+        binding.cpTitle.setTextColor(Color.WHITE)
 
         dialog = CustomDialog(context)
         dialog.setContentView(view)

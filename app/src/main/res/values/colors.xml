@@ -10,4 +10,8 @@
     <color name="card_background">#E2F3EF</color>
     <color name="content_title">#86000000</color>
     <color name="name_color">#BF000000</color>
+    <color name="colorPrimary">#BF537ACA</color>
+    <color name="dialogBackground">#BF212939</color>
+
+
 </resources>
