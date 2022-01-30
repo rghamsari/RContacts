@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ghamsari.rcontacts.R
 import com.ghamsari.rcontacts.model.Contacts
 import com.ghamsari.rcontacts.utils.ContactAdapter
+import com.ghamsari.rcontacts.utils.CustomProgressDialog
 import com.ghamsari.rcontacts.viewmodle.ContactsViewModle
 import com.ghamsari.rcontacts.viewmodle.ContactsViewModelFactory
 
@@ -51,10 +52,15 @@ val contactsViewModelFactory :ContactsViewModelFactory = TODO()
 
     fun lodeData(){
         viewModle =  ViewModelProvider(this, contactsViewModelFactory).get(ContactsViewModle::class.java)
-        viewModle .contactsList.observe(this, Observer{
+        viewModle .getContactsListObserver().observe(this, Observer{
+            lateinit var progressDialog : CustomProgressDialog
+           progressDialog.show(context = this, title = "pless wait...")
             val contact :Contacts = it!!.get(0)
             contactsAdapter.contactAdapterData(contact.results)
             contactsAdapter.notifyDataSetChanged()
+            if(viewModle.getcustomProgressDialogObserver().equals(false)){
+                progressDialog.dissmis()
+            }
         })
 
     }
