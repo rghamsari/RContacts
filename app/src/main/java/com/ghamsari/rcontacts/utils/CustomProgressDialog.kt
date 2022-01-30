@@ -77,4 +77,7 @@ class CustomProgressDialog {
             }
         }
     }
+    public fun dissmis(){
+        dialog.dismiss()
+    }
 }
